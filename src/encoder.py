@@ -14,12 +14,20 @@ from pygments.lexers import get_lexer_by_name
 from .constants import HEADER_SIZE, MAGIC_NUMBER, USED_BITS_MASK, USED_BITS_PER_BYTE
 
 
-def make_image(code: str) -> PIL.Image.Image:
+def make_image(code: str, *, language: str = "python", **formatter_options) -> PIL.Image.Image:
     """
     Make a screenshot of the code
     """
-    lexer = get_lexer_by_name("python")
-    formatter = get_formatter_by_name("png")
+    if not formatter_options:
+        formatter_options = dict(
+            style="lightbulb",
+            line_number_bg=None,
+            line_number_separator=True,
+            line_number_pad=10,
+            image_pad=20,
+        )
+    lexer = get_lexer_by_name(language)
+    formatter = get_formatter_by_name("png", **formatter_options)
     result = highlight(code, lexer, formatter)
     return PIL.Image.open(BytesIO(result)).convert("RGBA")
 
@@ -40,11 +48,11 @@ def chunk(data: Sequence[int]):
     return chunks
 
 
-def encode(code: str) -> PIL.Image.Image:
+def encode(code: str, **formatter_options) -> PIL.Image.Image:
     """
     Make a screenshot of the code with the text steganography'd in
     """
-    image = make_image(code)
+    image = make_image(code, **formatter_options)
     im_arr = np.array(image)
     code_bytes = code.encode(encoding="ascii")
     code_chunks = chunk(code_bytes)
