@@ -1,0 +1,432 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/tab.css' %}" />
+<link rel="stylesheet" href="{% static 'css/imgupload.css' %}" />
+
+{% endblock %}
+{% block content %}
+<!--Navbar Start-->
+<nav class="navbar navbar-expand-lg fixed-top d navbar-fusionx normal-nav" style="background-color: #6C55A3;">
+    <div class="container">
+        <a class="navbar-brand logo" href="">
+            <img src="{% static 'images/chat-icon.png' %}" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
+                <li class="nav-item ">
+                    <a href="{% url 'index' %}" class="nav-link">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a href="{% url 'about' %}" class="nav-link">About</a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Header Start -->
+<section class=" align-items-center position-relative d-flex" id="top" style="margin-top: 120px;">
+    <div class="container">
+
+        <center>
+            <h2 class="highlight header-colorize text-uppercase mb-3 text">Try Now</h2>
+        </center>
+        <!-- Nav tabs -->
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#encoder" role="tab">
+                            <i class="fa fa-code"></i> Encoder
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#decoder" role="tab">
+                            <i class="fa fa-image"></i> Decoder
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="card-body">
+                <!-- Tab panes -->
+                <div class="tab-content text-center">
+                    <div class="tab-pane active" id="encoder" role="tabpanel">
+                        <form method="post" action="{% url 'encode' %}">
+                            {% csrf_token %}
+                        <div class="form-outline">
+                            <textarea name="user_code" class="form-control" id="textAreaExample1"
+                            placeholder='Example:
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        watched = {}
+        for i, value in enumerate(nums):
+            rest = target - value
+
+            if rest in watched:
+                return [watched[rest],i]
+            else:
+                watched[value] = i
+                            '
+                            rows="18"></textarea>
+                            <!-- <label class="form-label" for="textAreaExample">Code</label> -->
+                            <div class="mt-4">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="tab-pane" id="decoder" role="tabpanel">
+                        <!-- Upload Area -->
+                        <div id="uploadArea" class="upload-area ">
+                            <!-- Header -->
+                            <div class="upload-area__header">
+                                <h1 class="upload-area__title">Upload your file</h1>
+                                <p class="upload-area__paragraph">
+                                    File should be an image
+                                    <strong class="upload-area__tooltip">
+                                        Like
+                                        <span class="upload-area__tooltip-data"></span>
+                                        <!-- Data Will be Comes From Js -->
+                                    </strong>
+                                </p>
+                            </div>
+                            <!-- End Header -->
+
+                            <!-- Drop Zoon -->
+                            <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
+                                <span class="drop-zoon__icon">
+                                    <i class='bx bxs-file-image'></i>
+                                </span>
+                                <p class="drop-zoon__paragraph">Drop your file here or Click to browse</p>
+                                <span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
+                                <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image"
+                                    draggable="false">
+                                <input type="file" id="fileInput" class="drop-zoon__file-input" accept="image/*">
+                            </div>
+                            <!-- End Drop Zoon -->
+
+                            <!-- File Details -->
+                            <div id="fileDetails" class="upload-area__file-details file-details">
+                                <h3 class="file-details__title">Uploaded File</h3>
+
+                                <div id="uploadedFile" class="uploaded-file">
+                                    <div class="uploaded-file__icon-container">
+                                        <i class='bx bxs-file-blank uploaded-file__icon'></i>
+                                        <span class="uploaded-file__icon-text"></span>
+                                        <!-- Data Will be Comes From Js -->
+                                    </div>
+
+                                    <div id="uploadedFileInfo" class="uploaded-file__info">
+                                        <span class="uploaded-file__name">Proejct 1</span>
+                                        <span class="uploaded-file__counter">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                            <!-- End File Details -->
+                        </div>
+                        <!-- End Upload Area -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
+<!-- Header End -->
+
+<!-- About Start -->
+<section class="section bg-grey" id="about">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="text-center mb-5">
+                    <h2 class="highlight header-colorize text-uppercase mb-3">About Us</h2>
+                    <p class="text-sub size-14">For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <img src="{% static 'images/header-about.png' %}" alt="" class="img-fluid mx-auto d-block">
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <div class="text-sub mt-5 mt-lg-0">
+                    <h3 class="title font-weight-medium mb-4">A perfect bootstrap theme for all types of business.</h3>
+                    <p class="mb-4 size-15">But in order that you may see whence all this error is born, the pleasure of those who accuse and the pain of those who praise, I will open the whole matter, and those very things which, as it were, from that discoverer of truth.
+                    </p>
+                    <p class="mb-4 size-15">For no one despises or hates or runs away from pleasure because it is pleasure, but because great pains result to those who do not know how to follow pleasure with reason.</p>
+                    <a href="" class="learn-more size-15">Learn more <span class="ml-2 right-icon"><i
+                                class="fas fa-arrow-right"></i></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About End -->
+
+<!-- Services Start -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="text-center mb-5">
+                    <div class="text-center mb-5">
+                        <h2 class="highlight header-colorize text-uppercase mb-3">Our Services</h2>
+                        <p class="text-sub size-14">For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="services-container pr-4 pl-4">
+                    <div class="services-icon mt-3">
+                        <i class="far fa-window-maximize"></i>
+                    </div>
+                    <h4 class="mb-4 mt-4 services-title">Web Design</h4>
+                    <p class="text-sub size-15">It is important to take care of the patient, to be followed by the patient, but it will happen at such a time that there is a lot of work and pain. For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="services-container pr-4 pl-4">
+                    <div class="services-icon mt-3">
+                        <i class="far fa-window-restore"></i>
+                    </div>
+                    <h4 class="mb-4 mt-4 services-title">App Development</h4>
+                    <p class="text-sub size-15">It is important to take care of the patient, to be followed by the patient, but it will happen at such a time that there is a lot of work and pain. For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it. </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="services-container pr-4 pl-4">
+                    <div class="services-icon mt-3">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4 class="mb-4 mt-4 services-title">Mobile Development</h4>
+                    <p class="text-sub size-15">It is important to take care of the patient, to be followed by the patient, but it will happen at such a time that there is a lot of work and pain. For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it. </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- Services End -->
+
+<!-- Accomplished Start -->
+<Section class="section accomplished-counter-bg">
+    <div class="accomplished-counter-bg"></div>
+    <div class="container">
+        <div class="row align-items-center" id="accomplished-counter">
+            <div class="col-lg-3 col-md-6">
+                <div class="accomplished-counter-box text-center px-4 py-5 mb-4 mb-lg-0">
+                    <div class="text-white">
+                        <i class="far fa-window-maximize accomplished-counter-icon mx-auto"></i>
+                        <h1 class="mb-2 mt-3"><span class="accomplished-counter-value mt-4" counter="90">0</span>+</h1>
+                        <p class="mb-0 text-white-70">Websites</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="accomplished-counter-box text-center mb-4 mb-lg-0 px-4 py-5">
+                    <div class="text-white">
+                        <i class="far fa-window-restore accomplished-counter-icon mx-auto"></i>
+                        <h1 class="mb-2 mt-3"><span class="accomplished-counter-value mt-4" counter="82">0</span>+</h1>
+                        <p class="mb-0 text-white-70">Applications</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="accomplished-counter-box text-center mb-4 mb-lg-0 px-4 py-5">
+                    <div class="text-white">
+                        <i class="fas fa-mobile-alt accomplished-counter-icon mx-auto"></i>
+                        <h1 class="mb-2 mt-3"><span class="accomplished-counter-value mt-4" counter="15">0</span></h1>
+                        <p class="mb-0 text-white-70">Mobile Apps</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="accomplished-counter-box text-center mb-4 mb-lg-0 px-4 py-5">
+                    <div class="text-white">
+                        <i class="far fa-smile-beam accomplished-counter-icon mx-auto"></i>
+                        <h1 class="mb-2 mt-3"><span class="accomplished-counter-value mt-4" counter="187">0</span></h1>
+                        <p class="mb-0 text-white-70">Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Section>
+<!-- Accomplished End -->
+
+<!-- Testimonials Start -->
+<section class="section bg-grey" id="testimonials">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="text-center mb-5">
+                    <h2 class="highlight text-uppercase mb-3 header-colorize">Testimonials</h2>
+                    <p class="text-sub size-14">For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it..</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9 col-center m-auto">
+
+
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item carousel-item active">
+                            <div class="img-box"><img src="{% static 'images/client.jpg' %}" alt=""></div>
+                            <p class="testimonial">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem
+                                tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
+                                malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non
+                                aliquet."</p>
+                            <p class="overview"><b>Kit Johnson</b>, Account Analyst</p>
+                        </div>
+                        <div class="item carousel-item">
+                            <div class="img-box"><img src="{% static 'images/client2.jpg' %}" alt=""></div>
+                            <p class="testimonial">"Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget
+                                nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis
+                                quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida
+                                odio."</p>
+                            <p class="overview"><b>Rick Gomez</b>, App Developer</p>
+                        </div>
+                        <div class="item carousel-item">
+                            <div class="img-box"><img src="{% static 'images/client3.jpg' %}" alt=""></div>
+                            <p class="testimonial">"Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id
+                                lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan
+                                tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa.
+                                Etiam hendrerit dolor eget rutrum."</p>
+                            <p class="overview"><b>Chris Smith</b>, CEO, ProTools</p>
+                        </div>
+                    </div>
+                    <!-- Carousel controls -->
+                    <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testimonials End -->
+
+<!-- Contact Start -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="text-center mb-5">
+                    <h2 class="highlight header-colorize text-uppercase mb-3">Contact</h2>
+                    <p class="text-sub size-14">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="contact-info">
+                    <h4 class="title mb-4">Get Connected</h4>
+                    <p class="text-sub size-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. </p>
+                    <p class="text-sub size-15 mb-4"><i class="fas fa-phone"></i> 659-888-5495</p>
+                    <p class="text-sub size-15 mb-4"><i class="fas fa-mobile-alt"></i> +1-689-888-5495</p>
+                    <p class="text-sub size-15 mb-4"><i class="fas fa-envelope"></i> info@example.com</p>
+                    <p class="text-sub size-15 mb-4"><i class="fas fa-map-marker-alt"></i> 200 Lexington Ave, New York,
+                        NY 10016, USA</p>
+                </div>
+            </div>
+
+            <div class="col-lg-7 offset-lg-1">
+                <div class="custom-form mt-4 mt-lg-0">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email"
+                                        placeholder="Enter Your Email.." />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="subject">Subject:</label>
+                                    <input type="text" class="form-control" id="subject"
+                                        placeholder="Enter Your Subject.." />
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label for="message">Message:</label>
+                                    <textarea name="message" id="message" rows="4" class="form-control"
+                                        placeholder="Enter Your Message.."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button href="" class="btn btn-primary"><span class="mr-2 left-icon"><i
+                                            class="fas fa-envelope"></i></span> Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- contact End -->
+
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/imgupload.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('[name="tabs"]').change(function () {
+            $('.tab-content .tab-pane').removeClass('show active');
+            $('#' + $(this).attr('id') + '-content').addClass('show active');
+        });
+    });
+</script>
+
+{% endblock %}

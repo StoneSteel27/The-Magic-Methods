@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<!--Navbar Start-->
+<nav class="navbar navbar-expand-lg fixed-top  navbar-fusionx normal-nav" style="background-color: #6C55A3;">
+    <div class="container">
+        <a class="navbar-brand logo" href="">
+            <img src="{% static 'images/chat-icon.png' %}" height="30">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
+                <li class="nav-item ">
+                    <a href="{% url 'index' %}" class="nav-link">Home</a>
+                </li>
+                
+                <li class="nav-item active">
+                    <a href="{% url 'about' %}" class="nav-link">About</a>
+                </li>
+
+                
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+<!-- About Start -->
+<section class="section bg-grey" id="about">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="text-center mb-5">
+                    <h2 class="highlight header-colorize text-uppercase mb-3">About Us</h2>
+                    <p class="text-sub size-14">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <img src="images/header-about.png" alt="" class="img-fluid mx-auto d-block">
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <div class="text-sub mt-5 mt-lg-0">
+                    <h3 class="title font-weight-medium mb-4">A perfect bootstrap theme for all types of business.</h3>
+                    <p class="mb-4 size-15">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.</p>
+                    <p class="mb-4 size-15">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    <a href="" class="learn-more size-15">Learn more <span class="ml-2 right-icon"><i class="fas fa-arrow-right"></i></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About End -->
+
+
+{% endblock %}
