@@ -111,7 +111,8 @@ class Solution(object):
                                 </p>
                             </div>
                             <!-- End Header -->
-
+                            <form method="post" action="{% url 'decode' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
                             <!-- Drop Zoon -->
                             <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
                                 <span class="drop-zoon__icon">
@@ -121,7 +122,7 @@ class Solution(object):
                                 <span id="loadingText" class="drop-zoon__loading-text">Please Wait</span>
                                 <img src="" alt="Preview Image" id="previewImage" class="drop-zoon__preview-image"
                                     draggable="false">
-                                <input type="file" id="fileInput" class="drop-zoon__file-input" accept="image/*">
+                                <input type="file" id="fileInput" name="code_image" class="drop-zoon__file-input" accept="image/*">
                             </div>
                             <!-- End Drop Zoon -->
 
@@ -145,6 +146,7 @@ class Solution(object):
                             <div class="mt-4">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             </div>
+                            </form>
                             <!-- End File Details -->
                         </div>
                         <!-- End Upload Area -->
