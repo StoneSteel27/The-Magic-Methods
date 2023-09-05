@@ -5,7 +5,9 @@ Decode an image built by encoder.encode
 import numpy as np
 import PIL.Image
 
-from .constants import HEADER_SIZE, MAGIC_NUMBER, USED_BITS_MASK, USED_BITS_PER_BYTE
+from .constants import (
+    HEADER_SIZE, MAGIC_NUMBER, USED_BITS_MASK, USED_BITS_PER_BYTE
+)
 
 
 def decode(image: PIL.Image.Image):
@@ -25,12 +27,11 @@ def decode(image: PIL.Image.Image):
         code_len |= chunks[i] << off
     chunks_per_char = 8 // USED_BITS_PER_BYTE
     num_code_chunks = code_len * chunks_per_char
-    code_chunks = chunks[HEADER_SIZE:HEADER_SIZE + num_code_chunks]
+    code_chunks = chunks[HEADER_SIZE : HEADER_SIZE + num_code_chunks]
     code_chars = []
     for i in range(0, len(code_chunks), chunks_per_char):
         char = 0
-        for char_chunk in code_chunks[i:i + chunks_per_char]:
-            # print(char_chunk)
+        for char_chunk in code_chunks[i : i + chunks_per_char]:
             char = (char << USED_BITS_PER_BYTE) | char_chunk
         code_chars.append(char)
     return bytes(code_chars).decode("ascii")
