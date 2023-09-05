@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "django-files"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "==4.0"
+Pillow = "^10.0.0"
+code-stego = "^0.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
