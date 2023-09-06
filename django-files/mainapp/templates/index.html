@@ -66,7 +66,7 @@ Home
                 <!-- Tab panes -->
                 <div class="tab-content text-center">
                     <div class="tab-pane active" id="encoder" role="tabpanel">
-                        <form method="post" action="{% url 'encode' %}">
+                        <form method="post" action="{% url 'encode' %}" id="code_form">
                             {% csrf_token %}
                         <div class="form-outline">
                             <textarea name="user_code" class="form-control" id="textAreaExample1"
@@ -111,7 +111,7 @@ class Solution(object):
                                 </p>
                             </div>
                             <!-- End Header -->
-                            <form method="post" action="{% url 'decode' %}" enctype="multipart/form-data">
+                            <form method="post" action="{% url 'decode' %}" enctype="multipart/form-data" id="image_form">
                                 {% csrf_token %}
                             <!-- Drop Zoon -->
                             <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
@@ -430,5 +430,68 @@ class Solution(object):
         });
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        // Function to validate code input
+        function isValidCode(code) {
+            // Add your code validation logic here
+            // For example, check if the code is not empty
+            return code.trim() !== '';
+        }
+
+        // Form submission event for the code form
+        $("#code_form").submit(function (e) {
+
+            // Get code input value
+            var code = $("#textAreaExample1").val();
+
+            // Validate code input
+            if (!isValidCode(code)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Code',
+                    text: 'Please enter valid code.',
+                });
+                return false; // Prevent form submission
+            }
+            console.log('valid')
+            return true
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        // Function to validate image input
+        function isValidImage(fileInput) {
+            // Add your image validation logic here
+            // For example, check if a file is selected
+            return fileInput.files.length > 0;
+        }
+
+        // Form submission event for the image form
+        $("#image_form").submit(function (e) {
+
+            // Get file input element
+            var fileInput = $("#fileInput")[0];
+
+            // Validate image input
+            if (!isValidImage(fileInput)) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Image',
+                    text: 'Please select a valid image file.',
+                });
+                return false; // Prevent form submission
+            }
+            return true
+
+           
+        });
+    });
+</script>
+
+
 
 {% endblock %}

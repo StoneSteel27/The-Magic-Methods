@@ -43,14 +43,35 @@ Encoded
         
         <div>
 
-            <a href="/media/result.png" target="_blank" ><img src="/media/result.png"></a>
+            <a href="data:image/png;base64,{{ image_base64 }}" target="_blank" ><img src="data:image/png;base64,{{ image_base64 }}"></a>
         </div>
     </div>
     <div class="d-flex justify-content-center mt-5">
-        <a class="btn btn-primary" href="{% url 'index' %}"> Go Back to Home</a>
+        <a href="#" class="btn btn-primary m-2" id="downloadButton">Download</a>
+        <a href="#" class="btn btn-success m-2" id="viewButton">Full Screen</a>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <a class="btn btn-danger" href="{% url 'index' %}"> Go Back to Home</a>
     </div>
 </section>
 <!-- About End -->
 
 
+{% endblock %}
+{% block script %}
+<script>
+    // JavaScript to handle the download and view actions
+    document.getElementById("downloadButton").addEventListener("click", function() {
+        var link = document.createElement('a');
+        link.href = 'data:image/png;base64,{{ image_base64 }}';
+        link.download = 'encoded_image.png';
+        link.click();
+    });
+
+    document.getElementById("viewButton").addEventListener("click", function() {
+        var newTab = window.open();
+        newTab.document.write('<img src="data:image/png;base64,{{ image_base64 }}" alt="Encoded Image">');
+        newTab.document.close();
+    });
+</script>
 {% endblock %}

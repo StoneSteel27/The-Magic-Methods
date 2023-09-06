@@ -45,6 +45,7 @@ Decoded
     </center>
     <div class="container justify-content-center">
         <pre><code class="language-python">{{decoded}}</code></pre>
+        <button id="copyCode" class="btn btn-primary">Copy Code</button>
         <!-- <div>
 
             <div class="form-outline">
@@ -63,5 +64,33 @@ Decoded
 {% block script %}
 <script src="{% static 'js/prism.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Find the copy button and code element
+        var copyButton = document.getElementById("copyCode");
+        var codeElement = document.querySelector("code");
 
+        // Click event handler for the copy button
+        copyButton.addEventListener("click", function () {
+            // Create a text area to temporarily hold the code content
+            var textArea = document.createElement("textarea");
+            textArea.value = codeElement.textContent;
+
+            // Append the text area to the document
+            document.body.appendChild(textArea);
+
+            // Select the text in the text area
+            textArea.select();
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Remove the temporary text area
+            document.body.removeChild(textArea);
+
+            // Show a success message
+            alert("Code copied to clipboard!");
+        });
+    });
+</script>
 {% endblock %}
