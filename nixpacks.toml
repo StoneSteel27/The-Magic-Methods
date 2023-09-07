@@ -1,2 +1,2 @@
-[phase.setup]
+[phases.setup]
 aptPkgs = ['fontconfig']
