@@ -24,5 +24,5 @@ def main():
 
 
 if __name__ == '__main__':
-    subprocess.Popen(["python", "discord_bot.py"])
+    # subprocess.Popen(["python", "discord_bot.py"])
     main()
