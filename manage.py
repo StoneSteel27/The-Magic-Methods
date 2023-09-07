@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import subprocess
 from dotenv import load_dotenv
 
 
@@ -17,8 +18,11 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    # Run the Discord bot script as a separate process
+
     execute_from_command_line(sys.argv)
 
 
 if __name__ == '__main__':
+    subprocess.Popen(["python", "discord_bot.py"])
     main()
