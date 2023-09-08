@@ -8,7 +8,7 @@ COPY . .
 RUN pip install --upgrade pip
 RUN apt-get update 
 RUN apt-get install fontconfig
-RUN pip install -r dev-requirements.txt 
+RUN pip install -r requirements.txt 
 
 
 EXPOSE 8000
