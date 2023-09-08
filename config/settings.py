@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["codestego.up.railway.app",'127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://codestego.up.railway.app', 'codestego.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://codestego.up.railway.app', 'https://codestego.onrender.com/']
 
 
 # Application definition
