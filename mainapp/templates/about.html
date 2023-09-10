@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-About
+Home
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,8 @@ About
         <a class="navbar-brand logo" href="">
             <img src="{% static 'images/chat-icon.png' %}" height="30">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,43 +21,56 @@ About
                 <li class="nav-item ">
                     <a href="{% url 'index' %}" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item ">
-                    <a href="{% url 'stego' %}" class="nav-link">Stego</a>
-                </li>
                 <li class="nav-item active">
                     <a href="{% url 'about' %}" class="nav-link">About</a>
                 </li>
 
-                
-                
+
+
             </ul>
         </div>
     </div>
 </nav>
 <!-- Navbar End -->
 <!-- About Start -->
-<section class="section bg-grey" id="about">
+<section class="section bg-grey" id="about" style="margin-bottom: 100px;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="text-center mb-5">
                     <h2 class="highlight header-colorize text-uppercase mb-3">About Us</h2>
-                    <p class="text-sub size-14">For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it.</p>
+                    <p class="text-sub size-14"></p>
                 </div>
             </div>
         </div>
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <img src="{% static 'images/header-about.png' %}" alt="" class="img-fluid mx-auto d-block">
+                <img src="{% static 'images/magic.png' %}" alt="" class="img-fluid rounded-circle mx-auto d-block">
             </div>
             <div class="col-lg-6 offset-lg-1">
                 <div class="text-sub mt-5 mt-lg-0">
-                    <h3 class="title font-weight-medium mb-4">A perfect bootstrap theme for all types of business.</h3>
-                    <p class="mb-4 size-15">But in order that you may see whence all this error is born, the pleasure of those who accuse and the pain of those who praise, I will open the whole matter, and those very things which, as it were, from that discoverer of truth.
-                    </p>
-                    <p class="mb-4 size-15">For no one despises or hates or runs away from pleasure because it is pleasure, but because great pains result to those who do not know how to follow pleasure with reason.</p>
-                    <a href="" class="learn-more size-15">Learn more <span class="ml-2 right-icon"><i
-                                class="fas fa-arrow-right"></i></span></a>
+                    <h2 class="title font-weight-bolder mb-4">Code_Stego</h2>
+                    <ul>
+                        <li> <p class="mb-4 size-15">Code_Stego implements a Steganography algorithm to save source code into
+                            Image of
+                            the styled code snippet.
+                        </p></li>
+                        <li><p class="mb-4 size-15">Code_Stego is the project made by The Magic Methods team, for Python Discord
+                            Code Jam 2023</p>
+    </li>
+                    </ul>
+                   
+                    
+                    <h2 class="title font-weight-bolder mb-4">Features</h2>
+                    <ul>
+                        <li>
+                            <p class="mb-4 size-15">Your code snippet can be shared anywhere, and the image would contain the
+                                source code within itself. This would be a lot of help for others, and save them a lot of time,
+                                if they want to retype the code by themselves.
+                            </p>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>

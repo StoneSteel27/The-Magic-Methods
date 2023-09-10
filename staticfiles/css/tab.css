@@ -24,14 +24,6 @@ p {
     color: #9A9A9A;
 }
 
-body {
-    color: #2c2c2c;
-    font-size: 14px;
-    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-    overflow-x: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-}
 
 .nav-item .nav-link,
 .nav-tabs .nav-link {
