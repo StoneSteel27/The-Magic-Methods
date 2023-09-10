@@ -3,7 +3,9 @@
 the styled code snippet.
 - Code_Stego is the project made by The Magic Methods team, for Python Discord Code Jam 2023
 
-A Code_Stego Demo Website: [Code_Stego](https://codestego.up.railway.app/)
+A Code_Stego Demo Website: [Code_Stego](https://codestego.up.railway.app/).
+
+Invite our Discord Bot to your server : [Invite Bot](https://discord.com/api/oauth2/authorize?client_id=1148263715771273278&permissions=0&scope=bot)
 
 ## Features
 Your code snippet can be shared anywhere, and the image would contain the source code within itself. This would be a lot of help for others, and save them a lot of time, if they want to retype the code by themselves.
@@ -13,6 +15,9 @@ This project has 3 implementations within it:
 - A Python Module
 - Django website
 - A Discord Bot
+
+
+
 
 
 
