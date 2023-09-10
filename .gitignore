@@ -29,3 +29,5 @@ build/
 .vscode/
 # MacOS
 .DS_Store
+
+db.sqlite3

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>{% block title %} {% endblock %}</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- CSS -->
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}">
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block head %}
+
+    {% endblock head %}
+</head>
+<body>
+
+
+
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- Footer Start -->
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 pb-2">
+                    <p class="text-center white">2023 © Magic Methods. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer End -->
+{% if messages %}
+{% for message in messages %}
+  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <script>swal({
+        title: "Error :(",
+        text: "{{message}}",
+        icon: "warning",
+        button: "OK",
+      });
+    </script>
+
+  {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <script>swal({
+        title: "Success :)",
+        text: "{{message}}",
+        icon: "success",
+        button: "OK",
+      });
+    </script>
+
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <script>swal({
+        title: "Warning :",
+        text: "{{message}}",
+        icon: "warning",
+        button: "OK",
+    });
+    </script>
+    {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <script>swal({
+        title: "Info :",
+        text: "{{message}}",
+        icon: "info",
+        button: "OK",
+    });
+    </script>
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+    <!-- JS -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/scrollspy.min.js' %}"></script>
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/sweetalert2.min.js' %}"></script>
+
+    {% block script %}
+
+    {% endblock %}
+</body>
+
+
+</html>
