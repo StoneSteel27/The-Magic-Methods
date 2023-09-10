@@ -47,7 +47,7 @@ Steps To install and run Codestego's Website and Discord Bot, follow these steps
    docker run -d -p 8000:8000 codestego
    ```
 
-5. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/) 
+5. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## Installation Guide 2 ( Using python )
 
@@ -80,7 +80,7 @@ Steps To install and run Codestego's Website and Discord Bot, follow these steps
    python manage.py runserver 8000
    ```
 
-5. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/) 
+5. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## The Magic Methods Team
 - [MoltenSteel](https://github.com/StoneSteel27) - Team Leader
@@ -88,6 +88,3 @@ Steps To install and run Codestego's Website and Discord Bot, follow these steps
 - [hsp](https://github.com/ShakyaMajumdar)
 - [ilovetensor](https://github.com/ilovetensor)
 - [koushireo](https://github.com/FooChiHen)
-
-
-

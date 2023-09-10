@@ -1,8 +1,8 @@
 import io
+import logging
 import os
 import re
 import typing
-import logging
 
 import discord
 from discord.ext import commands
@@ -23,7 +23,6 @@ load_dotenv()
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-
 FORMATTED_CODE_REGEX = re.compile(
     r"(?P<delim>(?P<block>```)|``?)"  # code delimiter: 1-3 backticks; (?P=block) only matches if it's a block
     r"(?(block)(?:(?P<lang>[a-z]+)\n)?)"  # if we're in a block, match optional language (only letters plus newline)
@@ -35,14 +34,16 @@ FORMATTED_CODE_REGEX = re.compile(
 )
 
 
-
 @bot.event
 async def on_ready():
+    """Implements on_ready"""
     print("Authentication . {0.user}  online!".format(bot))  # TODO: logging
     logging.info(f"Bot -{bot.user}- is online!")  # Log that the bot is online
 
+
 @bot.command()
 async def encode(ctx: commands.Context, *, msg: str):
+    """Implements encode"""
     try:
         if match := FORMATTED_CODE_REGEX.match(msg):
             code = match.group("code")
@@ -60,8 +61,9 @@ async def encode(ctx: commands.Context, *, msg: str):
 
 @bot.command()
 async def decode(
-    ctx: commands.Context, attachment: typing.Optional[discord.Attachment]
+        ctx: commands.Context, attachment: typing.Optional[discord.Attachment]
 ):
+    """Implements decode"""
     if not (attachment and attachment.content_type.startswith("image")):
         await ctx.send("Could not find image attachment!")
         return
@@ -71,8 +73,7 @@ async def decode(
         await ctx.send(f"```\n{code}\n```")
     except Exception as e:
         logging.error(f"Error decoding image: {e}")  # Log the decoding error
-        await ctx.send("An error occurred while decoding the image.") # TODO escape potential ` in code
-
+        await ctx.send("An error occurred while decoding the image.")  # TODO escape potential ` in code
 
 
 bot.run(os.getenv("TOKEN"))

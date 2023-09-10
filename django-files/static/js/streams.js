@@ -25,7 +25,7 @@ let joinAndDisplayLocalStream = async () => {
         console.error(error,'errrrrrrrrrrrorrrrrrrrrr')
         window.open('/', '_self')
     }
-    
+
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks()
 
     let member = await createMember()
@@ -34,7 +34,7 @@ let joinAndDisplayLocalStream = async () => {
                      <div class="video-player" id="user-${UID}"></div>
                      <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
                   </div>`
-    
+
     document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
     localTracks[1].play(`user-${UID}`)
     await client.publish([localTracks[0], localTracks[1]])
@@ -172,4 +172,3 @@ joinAndDisplayLocalStream()
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
-

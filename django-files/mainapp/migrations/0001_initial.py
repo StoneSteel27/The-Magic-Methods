@@ -4,6 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    """Implemenation of Migration for uploading image"""
 
     initial = True
 

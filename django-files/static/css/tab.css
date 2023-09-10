@@ -244,7 +244,7 @@ p {
   src: url("https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/fonts/nucleo-outline.woff2");
   font-weight: normal;
   font-style: normal;
-        
+
 }
 
 .now-ui-icons {
@@ -266,7 +266,7 @@ footer{
     padding: 25px;
     font-weight: 300;
     background: #f7f7f7;
-    
+
 }
 .footer p{
     margin-bottom: 0;
@@ -294,12 +294,3 @@ footer p a:hover{
         margin-bottom: 5px;
     }
 }
-
-
-
-
-
-
-
-
-

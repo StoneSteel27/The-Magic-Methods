@@ -1,7 +1,7 @@
-from django.urls import include, path
+from django.urls import path
 
 from . import views
-from .api_views import EncoderAPIView,DecoderAPIView
+from .api_views import DecoderAPIView, EncoderAPIView
 
 urlpatterns = [
     path("", views.index, name="index"),

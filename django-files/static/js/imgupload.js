@@ -10,7 +10,7 @@ const dropZoon = document.querySelector('#dropZoon');
 // Loading Text
 const loadingText = document.querySelector('#loadingText');
 
-// Slect File Input 
+// Slect File Input
 const fileInput = document.querySelector('#fileInput');
 
 // Select Preview Image
@@ -48,24 +48,24 @@ const imagesTypes = [
 // Append Images Types Array Inisde Tooltip Data
 toolTipData.innerHTML = [...imagesTypes].join(', .');
 
-// When (drop-zoon) has (dragover) Event 
+// When (drop-zoon) has (dragover) Event
 dropZoon.addEventListener('dragover', function (event) {
-  // Prevent Default Behavior 
+  // Prevent Default Behavior
   event.preventDefault();
 
   // Add Class (drop-zoon--over) On (drop-zoon)
   dropZoon.classList.add('drop-zoon--over');
 });
 
-// When (drop-zoon) has (dragleave) Event 
+// When (drop-zoon) has (dragleave) Event
 dropZoon.addEventListener('dragleave', function (event) {
   // Remove Class (drop-zoon--over) from (drop-zoon)
   dropZoon.classList.remove('drop-zoon--over');
 });
 
-// When (drop-zoon) has (drop) Event 
+// When (drop-zoon) has (drop) Event
 dropZoon.addEventListener('drop', function (event) {
-  // Prevent Default Behavior 
+  // Prevent Default Behavior
   event.preventDefault();
 
   // Remove Class (drop-zoon--over) from (drop-zoon)
@@ -78,13 +78,13 @@ dropZoon.addEventListener('drop', function (event) {
   uploadFile(file);
 });
 
-// When (drop-zoon) has (click) Event 
+// When (drop-zoon) has (click) Event
 dropZoon.addEventListener('click', function (event) {
   // Click The (fileInput)
   fileInput.click();
 });
 
-// When (fileInput) has (change) Event 
+// When (fileInput) has (change) Event
 fileInput.addEventListener('change', function (event) {
   // Select The Chosen File
   const file = event.target.files[0];
@@ -97,9 +97,9 @@ fileInput.addEventListener('change', function (event) {
 function uploadFile(file) {
   // FileReader()
   const fileReader = new FileReader();
-  // File Type 
+  // File Type
   const fileType = file.type;
-  // File Size 
+  // File Size
   const fileSize = file.size;
 
   // If File Is Passed from the (File Validation) Function
@@ -117,9 +117,9 @@ function uploadFile(file) {
     // Remove Class (uploaded-file__info--active) from (uploadedFileInfo)
     uploadedFileInfo.classList.remove('uploaded-file__info--active');
 
-    // After File Reader Loaded 
+    // After File Reader Loaded
     fileReader.addEventListener('load', function () {
-      // After Half Second 
+      // After Half Second
       setTimeout(function () {
         // Add Class (upload-area--open) On (uploadArea)
         uploadArea.classList.add('upload-area--open');
@@ -147,7 +147,7 @@ function uploadFile(file) {
       progressMove();
     });
 
-    // Read (file) As Data Url 
+    // Read (file) As Data Url
     fileReader.readAsDataURL(file);
   } else { // Else
 
@@ -161,11 +161,11 @@ function progressMove() {
   // Counter Start
   let counter = 0;
 
-  // After 600ms 
+  // After 600ms
   setTimeout(() => {
     // Every 100ms
     let counterIncrease = setInterval(() => {
-      // If (counter) is equle 100 
+      // If (counter) is equle 100
       if (counter === 100) {
         // Stop (Counter Increase)
         clearInterval(counterIncrease);
@@ -190,7 +190,7 @@ function fileValidate(fileType, fileSize) {
     // Add Inisde (uploadedFileIconText) The (jpg) Value
     uploadedFileIconText.innerHTML = 'jpg';
   } else { // else
-    // Add Inisde (uploadedFileIconText) The Uploaded File Type 
+    // Add Inisde (uploadedFileIconText) The Uploaded File Type
     uploadedFileIconText.innerHTML = isImage[0];
   };
 
@@ -202,7 +202,7 @@ function fileValidate(fileType, fileSize) {
     } else { // Else File Size
       return alert('Please Your File Should be 2 Megabytes or Less');
     };
-  } else { // Else File Type 
+  } else { // Else File Type
     return alert('Please make sure to upload An Image File Type');
   };
 };

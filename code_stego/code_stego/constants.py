@@ -1,6 +1,4 @@
-"""
-Global constants
-"""
+"""Global constants"""
 
 MAGIC_NUMBER = 57764
 USED_BITS_PER_BYTE = 4

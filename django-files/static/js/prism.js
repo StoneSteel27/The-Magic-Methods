@@ -1720,4 +1720,3 @@ if (Prism.languages.markup) {
 }
 
 Prism.languages.js = Prism.languages.javascript;
-

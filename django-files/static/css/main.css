@@ -82,7 +82,7 @@ body{
     #welcome-message h1{
         font-size: 24px;
     }
-    
+
 }
 
 
@@ -150,7 +150,7 @@ body{
     justify-content: center;
     column-gap: 1em;
     position: relative;
-  
+
     bottom: 20px;
 }
 
@@ -162,7 +162,7 @@ body{
     box-shadow: var(--shaddow);
     background-color: #fff;
     cursor: pointer;
-    
+
     border-radius: 5px;
 
 }

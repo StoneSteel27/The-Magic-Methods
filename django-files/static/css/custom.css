@@ -1,7 +1,7 @@
 /*********************************************/
 /*              GENERAL CSS                  "/
 /*********************************************/
- 
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 body {
   font-family: "Poppins", sans-serif;
@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 /*********************************************/
 /*              UTILITY CSS                  "/
 /*********************************************/
- 
+
 .text-sub {
     color: #9b9bae !important;
   }
@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   /*********************************************/
 /*              NAVBAR CSS                  "/
 /*********************************************/
- 
+
 .nav-item .nav-link {
     text-decoration: none;
     display: inline-block;
@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6 {
   /*********************************************/
 /*              BUTTONS CSS                  "/
 /*********************************************/
- 
+
 .btn {
     border-radius: 4px;
     padding: 12px 30px;
@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
 /********************************************************************/
 /*               ACCOMPLISHED PROJECTS COUNTER CSS                  "/
 /*******************************************************************/
- 
+
 .accomplished-counter-icon {
     font-size: 52px;
   }
@@ -269,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
 /*********************************************/
 /*                FORMS CSS                  "/
 /*********************************************/
- 
+
 .form-control:focus {
     background-color: #fbfbfb;
     border-color: #6C55A3;
@@ -279,7 +279,7 @@ h1, h2, h3, h4, h5, h6 {
   .form-control {
     background-color: rgba(52, 58, 64, 0.01);
     border: 1px solid rgba(155, 155, 174, 0.3);
-   
+
     font-size: 14px;
   }
   .form-control::-webkit-input-placeholder {
@@ -304,7 +304,7 @@ h1, h2, h3, h4, h5, h6 {
 /*********************************************/
 /*              CAROUSEL CSS                  "/
 /*********************************************/
- 
+
 .col-center {
     margin: 0 auto;
     float: none !important;
@@ -381,7 +381,7 @@ h1, h2, h3, h4, h5, h6 {
 /*********************************************/
 /*              FOOTER CSS                  "/
 /*********************************************/
- 
+
 .footer {
     background-color: #6C55A3;
     padding-top: 20px;
@@ -394,7 +394,7 @@ h1, h2, h3, h4, h5, h6 {
 /*********************************************/
 /*              RESPONSIVE CSS               "/
 /*********************************************/
- 
+
 @media (min-width: 200px) and (max-width: 768px) {
     .navbar-fusionx {
       background-color: #ffffff !important;
