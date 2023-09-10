@@ -26,7 +26,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation
 
-Steps To install and run Codestego's Website and Discord Bot, follow these steps:
+Steps To install and run Codestego's Website , follow these steps:
 
 1. Clone the repository to your local machine:
 
@@ -59,7 +59,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Installation
 
-Steps To install and run Codestego's Website and Discord Bot, follow these steps:
+Steps To install and run Codestego's Website , follow these steps:
 
 1. Clone the repository to your local machine:
 
@@ -72,15 +72,16 @@ Steps To install and run Codestego's Website and Discord Bot, follow these steps
    cd django-files
    ```
 3. Install the required Python packages using pip:
+   ( it is recommended to do `pip install` inside a virtual environment. )
    ```shell
    pip install -r requirements.txt
    ```
-4. Run the Django development server:
+5. Run the Django development server:
    ```shell
-   python manage.py runserver 8000
+   python manage.py runserver
    ```
 
-5. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+6. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## The Magic Methods Team
 - [MoltenSteel](https://github.com/StoneSteel27) - Team Leader
