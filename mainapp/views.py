@@ -1,4 +1,3 @@
-import os
 import base64
 from io import BytesIO
 from django.shortcuts import render
@@ -15,6 +14,10 @@ def index(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def stego(request):
+    return render(request, 'stego.html')
 
 
 def encoder_view(request):
