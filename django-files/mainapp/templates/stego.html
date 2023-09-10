@@ -28,7 +28,7 @@ Home
                     <a href="{% url 'index' %}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a href="{% url 'stego' %}" class="nav-link">stego</a>
+                    <a href="{% url 'stego' %}" class="nav-link">Stego</a>
                 </li>
                 <li class="nav-item ">
                     <a href="{% url 'about' %}" class="nav-link">About</a>
@@ -43,7 +43,7 @@ Home
 <!-- Navbar End -->
 
 <!-- Header Start -->
-<section class=" align-items-center position-relative d-flex" id="top" style="margin-top: 120px;">
+<section class=" align-items-center position-relative d-flex" id="top" style="margin-top: 120px;margin-bottom: 100px;">
     <div class="container-fluid">
 
         <center>
@@ -114,7 +114,7 @@ class Solution(object):
                         <!-- Upload Area -->
                         <div class="row">
                             
-                        <div class="col-lg-5">
+                        <div class="col-lg-5 mt-5">
 
                         
                         <div id="uploadArea" class="upload-area ">
@@ -203,104 +203,10 @@ class Solution(object):
 </section>
 <!-- Header End -->
 
-<!-- About Start -->
-<section class="section bg-grey" id="about">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="text-center mb-5">
-                    <h2 class="highlight header-colorize text-uppercase mb-3">About Us</h2>
-                    <p class="text-sub size-14">For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-lg-5">
-                <img src="{% static 'images/header-about.png' %}" alt="" class="img-fluid mx-auto d-block">
-            </div>
-            <div class="col-lg-6 offset-lg-1">
-                <div class="text-sub mt-5 mt-lg-0">
-                    <h3 class="title font-weight-medium mb-4">A perfect bootstrap theme for all types of business.</h3>
-                    <p class="mb-4 size-15">But in order that you may see whence all this error is born, the pleasure of those who accuse and the pain of those who praise, I will open the whole matter, and those very things which, as it were, from that discoverer of truth.
-                    </p>
-                    <p class="mb-4 size-15">For no one despises or hates or runs away from pleasure because it is pleasure, but because great pains result to those who do not know how to follow pleasure with reason.</p>
-                    <a href="" class="learn-more size-15">Learn more <span class="ml-2 right-icon"><i
-                                class="fas fa-arrow-right"></i></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- About End -->
 
 
 
-<!-- Contact Start -->
-<section class="section" id="contact">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="text-center mb-5">
-                    <h2 class="highlight header-colorize text-uppercase mb-3">Contact</h2>
-                    <p class="text-sub size-14">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                        ut aliquip ex ea commodo consequat.</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="contact-info">
-                    <h4 class="title mb-4">Get Connected</h4>
-                    <p class="text-sub size-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. </p>
-                    <p class="text-sub size-15 mb-4"><i class="fas fa-phone"></i> 659-888-5495</p>
-                    <p class="text-sub size-15 mb-4"><i class="fas fa-mobile-alt"></i> +1-689-888-5495</p>
-                    <p class="text-sub size-15 mb-4"><i class="fas fa-envelope"></i> info@example.com</p>
-                    <p class="text-sub size-15 mb-4"><i class="fas fa-map-marker-alt"></i> 200 Lexington Ave, New York,
-                        NY 10016, USA</p>
-                </div>
-            </div>
-
-            <div class="col-lg-7 offset-lg-1">
-                <div class="custom-form mt-4 mt-lg-0">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Enter Your Email.." />
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="subject">Subject:</label>
-                                    <input type="text" class="form-control" id="subject"
-                                        placeholder="Enter Your Subject.." />
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <label for="message">Message:</label>
-                                    <textarea name="message" id="message" rows="4" class="form-control"
-                                        placeholder="Enter Your Message.."></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <button href="" class="btn btn-primary"><span class="mr-2 left-icon"><i
-                                            class="fas fa-envelope"></i></span> Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- contact End -->
 
 {% endblock %}
 
