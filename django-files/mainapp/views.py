@@ -6,7 +6,6 @@ from PIL import Image
 
 from code_stego import decode, encode
 
-from .models import ImageUploadModel
 
 
 # Create your views here.
@@ -16,6 +15,10 @@ def index(request):
 
 def about(request):
     return render(request, "about.html")
+
+
+def stego(request):
+    return render(request, 'stego.html')
 
 
 def encoder_view(request):

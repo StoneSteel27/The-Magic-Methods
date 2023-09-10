@@ -20,7 +20,9 @@ Home
                 <li class="nav-item ">
                     <a href="{% url 'index' %}" class="nav-link">Home</a>
                 </li>
-                
+                <li class="nav-item ">
+                    <a href="{% url 'stego' %}" class="nav-link">Stego</a>
+                </li>
                 <li class="nav-item active">
                     <a href="{% url 'about' %}" class="nav-link">About</a>
                 </li>
@@ -39,20 +41,22 @@ Home
             <div class="col-lg-6 col-md-8">
                 <div class="text-center mb-5">
                     <h2 class="highlight header-colorize text-uppercase mb-3">About Us</h2>
-                    <p class="text-sub size-14">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="text-sub size-14">For to come to the smallest detail, no one should practice any kind of work unless he derives some benefit from it.</p>
                 </div>
             </div>
         </div>
         <div class="row align-items-center">
             <div class="col-lg-5">
-                <img src="images/header-about.png" alt="" class="img-fluid mx-auto d-block">
+                <img src="{% static 'images/header-about.png' %}" alt="" class="img-fluid mx-auto d-block">
             </div>
             <div class="col-lg-6 offset-lg-1">
                 <div class="text-sub mt-5 mt-lg-0">
                     <h3 class="title font-weight-medium mb-4">A perfect bootstrap theme for all types of business.</h3>
-                    <p class="mb-4 size-15">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.</p>
-                    <p class="mb-4 size-15">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                    <a href="" class="learn-more size-15">Learn more <span class="ml-2 right-icon"><i class="fas fa-arrow-right"></i></span></a>
+                    <p class="mb-4 size-15">But in order that you may see whence all this error is born, the pleasure of those who accuse and the pain of those who praise, I will open the whole matter, and those very things which, as it were, from that discoverer of truth.
+                    </p>
+                    <p class="mb-4 size-15">For no one despises or hates or runs away from pleasure because it is pleasure, but because great pains result to those who do not know how to follow pleasure with reason.</p>
+                    <a href="" class="learn-more size-15">Learn more <span class="ml-2 right-icon"><i
+                                class="fas fa-arrow-right"></i></span></a>
                 </div>
             </div>
         </div>

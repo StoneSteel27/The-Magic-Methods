@@ -7,6 +7,8 @@ Home
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/tab.css' %}" />
 <link rel="stylesheet" href="{% static 'css/imgupload.css' %}" />
+<link rel="stylesheet" href="{% static 'css/prism.css' %}" />
+
 
 {% endblock %}
 {% block content %}
@@ -22,11 +24,11 @@ Home
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-center" id="mySidenav">
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a href="{% url 'index' %}" class="nav-link">Home</a>
                 </li>
-                <li class="nav-item ">
-                    <a href="{% url 'stego' %}" class="nav-link">Stego</a>
+                <li class="nav-item active">
+                    <a href="{% url 'stego' %}" class="nav-link">stego</a>
                 </li>
                 <li class="nav-item ">
                     <a href="{% url 'about' %}" class="nav-link">About</a>
@@ -42,10 +44,10 @@ Home
 
 <!-- Header Start -->
 <section class=" align-items-center position-relative d-flex" id="top" style="margin-top: 120px;">
-    <div class="container">
+    <div class="container-fluid">
 
         <center>
-            <h2 class="highlight header-colorize text-uppercase mb-3 text">Try Now</h2>
+            <h2 class="highlight header-colorize text-uppercase mb-3 text">Encode / Decoce</h2>
         </center>
         <!-- Nav tabs -->
         <div class="card">
@@ -68,7 +70,10 @@ Home
                 <!-- Tab panes -->
                 <div class="tab-content text-center">
                     <div class="tab-pane active" id="encoder" role="tabpanel">
-                        <form method="post" action="{% url 'encode' %}" id="code_form">
+                    <div class="row" >
+
+                    <div class="col-lg-6" >
+                        <form method="post"  id="code_form">
                             {% csrf_token %}
                         <div class="form-outline">
                             <textarea name="user_code" class="form-control" id="textAreaExample1"
@@ -89,16 +94,29 @@ class Solution(object):
             else:
                 watched[value] = i
                             '
-                            rows="18"></textarea>
+                            rows="20"></textarea>
                             <!-- <label class="form-label" for="textAreaExample">Code</label> -->
-                            <div class="mt-4">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                            </div>
+                           
                         </div>
                     </form>
                     </div>
+                    
+                    <div class="col-lg-6" style="height: 50vh;overflow-y: scroll;">
+                        <div class="d-flex justify-content-center mt-5">
+                            <a href="#" class="btn btn-primary m-2" id="downloadButton"><i class="fa fa-download"></i></a>
+                            <a href="#" class="btn btn-success m-2" id="viewButton"><i class="fa fa-expand"></i></a>
+                        </div>
+                        <img id="encoded_img" class="img"  src="{% static 'images/encode-demo.png' %}">
+                    </div>
+                </div>
+                </div>
                     <div class="tab-pane" id="decoder" role="tabpanel">
                         <!-- Upload Area -->
+                        <div class="row">
+                            
+                        <div class="col-lg-5">
+
+                        
                         <div id="uploadArea" class="upload-area ">
                             <!-- Header -->
                             <div class="upload-area__header">
@@ -113,7 +131,7 @@ class Solution(object):
                                 </p>
                             </div>
                             <!-- End Header -->
-                            <form method="post" action="{% url 'decode' %}" enctype="multipart/form-data" id="image_form">
+                            <form method="post"  enctype="multipart/form-data" id="image_form">
                                 {% csrf_token %}
                             <!-- Drop Zoon -->
                             <div id="dropZoon" class="upload-area__drop-zoon drop-zoon">
@@ -130,7 +148,7 @@ class Solution(object):
 
                             <!-- File Details -->
                             <div id="fileDetails" class="upload-area__file-details file-details">
-                                <h3 class="file-details__title">Uploaded File</h3>
+                                <h3 class="file-details__title">Uploaded Image</h3>
 
                                 <div id="uploadedFile" class="uploaded-file">
                                     <div class="uploaded-file__icon-container">
@@ -145,14 +163,35 @@ class Solution(object):
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-4">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                            </div>
+                            
                             </form>
                             <!-- End File Details -->
                         </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class=" d-flex justify-content-end">
+                                <button id="copyCode" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Copy Code"><i class="fa fa-copy"></i></button>
+                            </div>
+                            <pre><code class="language-python">
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        watched = {}
+        for i, value in enumerate(nums):
+            rest = target - value
+
+            if rest in watched:
+                return [watched[rest],i]
+            else:
+                watched[value] = i</code></pre>
+                        </div>
                         <!-- End Upload Area -->
-                    </div>
+                        </div>
+                </div>
 
                 </div>
             </div>
@@ -266,7 +305,80 @@ class Solution(object):
 {% endblock %}
 
 {% block script %}
+
 <script src="{% static 'js/imgupload.js' %}"></script>
+<script src="{% static 'js/prism.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Find the copy button and code element
+        var copyButton = document.getElementById("copyCode");
+        var codeElement = document.querySelector("code");
+
+        // Click event handler for the copy button
+        copyButton.addEventListener("click", function () {
+            // Create a text area to temporarily hold the code content
+            var textArea = document.createElement("textarea");
+            textArea.value = codeElement.textContent;
+
+            // Append the text area to the document
+            document.body.appendChild(textArea);
+
+            // Select the text in the text area
+            textArea.select();
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Remove the temporary text area
+            document.body.removeChild(textArea);
+
+            // Show a success message
+            alert("Code copied to clipboard!");
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        // Initialize Clipboard.js for copy functionality
+        new ClipboardJS('#copyCode');
+
+        // Event listener for file input change (when an image is selected)
+        $("#fileInput").change(function() {
+            var formData = new FormData($("#image_form")[0]);
+
+            $.ajax({
+                type: "POST",
+                url: "{% url 'decode-api' %}", // Replace with your decode URL
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    // Assuming the response contains a 'decoded' field with the code
+                    var decodedCode = data.decoded;
+                    console.log(decodedCode,'kdjfkdjfkdj')
+                    $("#uploadedFileInfo .uploaded-file__name").text("Decoded Code");
+                    $("#copyCode").attr("data-clipboard-text", decodedCode);
+                    $("code.language-python").text(decodedCode);
+
+                    // Re-run Prism.js highlighting after code update
+                    Prism.highlightAll();
+
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors here
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Image',
+                    text: 'Please select a valid image file.',
+                });
+                }
+            });
+        });
+    });
+</script>
 <script>
     $(document).ready(function () {
         $('[name="tabs"]').change(function () {
@@ -275,67 +387,91 @@ class Solution(object):
         });
     });
 </script>
-
 <script>
-    $(document).ready(function () {
-        // Function to validate code input
-        function isValidCode(code) {
-            // Add your code validation logic here
-            // For example, check if the code is not empty
-            return code.trim() !== '';
+$(document).ready(function() {
+    // Declare the variable to store encoded image data
+    var encodedImageData = null;
+
+    // Function to handle encoding when the textarea input changes
+    function encodeOnChange() {
+        var userCode = $("#textAreaExample1").val();
+
+        // Check if the user code is empty or contains only whitespace
+        if (!userCode || userCode.trim() === "") {
+            // Clear the image when there's no code
+            $("#encoded_img").attr("src", "{% static 'images/encode-demo.png' %}");
+            encodedImageData = null; // Reset encodedImageData
+            return;
         }
 
-        // Form submission event for the code form
-        $("#code_form").submit(function (e) {
+        // Make the AJAX request to encode the code
+        $.ajax({
+            type: "POST",
+            url: "/api/encode/",  // Replace with your API endpoint URL
+            data: { user_code: userCode, csrfmiddlewaretoken: '{{ csrf_token }}' },
+            success: function(data) {
+                // Assuming data is JSON and contains the 'image_base64' field
+                var imageBase64 = data.image_base64;
+                $("#encoded_img").attr("src", "data:image/png;base64," + imageBase64);
 
-            // Get code input value
-            var code = $("#textAreaExample1").val();
-
-            // Validate code input
-            if (!isValidCode(code)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid Code',
-                    text: 'Please enter valid code.',
-                });
-                return false; // Prevent form submission
+                // Store the image data for download and view
+                encodedImageData = imageBase64;
+            },
+            error: function(xhr, status, error) {
+                // Handle errors here
+                console.error(xhr);
+                encodedImageData = null; // Reset encodedImageData in case of an error
             }
-            console.log('valid')
-            return true
-
         });
-    });
-</script>
-<script>
-    $(document).ready(function () {
-        // Function to validate image input
-        function isValidImage(fileInput) {
-            // Add your image validation logic here
-            // For example, check if a file is selected
-            return fileInput.files.length > 0;
+    }
+
+    // Attach the encodeOnChange function to the input event of the textarea
+    $("#textAreaExample1").on("input", encodeOnChange);
+
+    // Initial encoding when the page loads
+    encodeOnChange();
+
+    // Event listener for the "Download" button
+    $("#downloadButton").click(function() {
+        if (encodedImageData) {
+            var downloadLink = document.createElement("a");
+            downloadLink.href = "data:image/png;base64," + encodedImageData;
+            downloadLink.download = "encoded_image.png";
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        } else {
+            // Handle case where there's no image data to download
+            Swal.fire({
+                icon: 'error',
+                title: 'No Image Data',
+                text: 'There is no image data to download.',
+            });
         }
-
-        // Form submission event for the image form
-        $("#image_form").submit(function (e) {
-
-            // Get file input element
-            var fileInput = $("#fileInput")[0];
-
-            // Validate image input
-            if (!isValidImage(fileInput)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Invalid Image',
-                    text: 'Please select a valid image file.',
-                });
-                return false; // Prevent form submission
-            }
-            return true
-
-           
-        });
     });
+
+    // Event listener for the "View" button
+    $("#viewButton").click(function() {
+        if (encodedImageData) {
+            var newWindow = window.open("");
+            newWindow.document.write('<img src="data:image/png;base64,' + encodedImageData + '" />');
+        } else {
+            // Handle case where there's no image data to view
+            Swal.fire({
+                icon: 'error',
+                title: 'No Image Data',
+                text: 'There is no image data to view.',
+            });
+        }
+    });
+});
+
 </script>
+
+
+
+
 
 
 
