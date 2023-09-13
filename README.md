@@ -3,6 +3,8 @@
 the styled code snippet.
 - Code_Stego is the project made by The Magic Methods team, for Python Discord Code Jam 2023
 
+[Explanation](https://raw.githubusercontent.com/StoneSteel27/The-Magic-Methods/main/doc_images/code_stego.png)
+
 A Code_Stego Demo Website: [Code_Stego](https://codestego.up.railway.app/).
 
 Invite our Discord Bot to your server : [Invite Bot](https://discord.com/api/oauth2/authorize?client_id=1148263715771273278&permissions=0&scope=bot)
