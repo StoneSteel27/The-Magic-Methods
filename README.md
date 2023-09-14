@@ -88,6 +88,70 @@ Steps To install and run Codestego's Website , follow these steps:
 
 6. Access Codestego in your web browser by navigating to  [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
+## Steps To install and run Codestego's Discord bot , follow these steps:
+
+1. Clone the repository to your local machine:
+
+   ```shell
+   git clone https://github.com/StoneSteel27/The-Magic-Methods.git
+   ```
+2. Change your working directory to the project's bot folder:
+   ```shell
+   cd The-Magic-Methods
+   cd bot
+   ```
+3. Install the required Python packages using pip:
+   ( it is recommended to do `pip install` inside a virtual environment. )
+   ```shell
+   pip install discord.py
+   pip install code_stego
+   pip install python-dotenv
+   ```
+4. Go to [Discord Developers Website](https://discord.com/developers/applications) and create a new application
+   - Go to OAuth2=>General section and change default Authorization Link to in-app Authorization and 
+   check these options
+      - Scopes:
+         - bot
+      - Permissions:
+         - Read Messages/View Channels
+         - Send Messages
+         - Attach Files
+         - Read Message History
+         - Use External Emojis
+
+   - Go to Bot section and click on Reset token confirm and copy the token and save it somewhere safe.
+   - Go to Oauth2=>URL Generator section and check these options
+      - Scopes:
+         - bot
+      - Permissions:
+         - Read Messages/View Channels
+         - Send Messages
+         - Attach Files
+         - Read Message History
+         - Use External Emojis
+   - Copy the GENERATED URL and open it in your browser and add the bot to your server
+
+      
+
+5. Create file .env without any file extension and add the below text:
+   ```shell
+   TOKEN = "Put your discord token here that you have saved earlier"
+   ```
+
+6. Make sure you are in the bot directory and run the bot using this command:
+   ```shell
+   python discord_bot.py
+   ```
+7. Now go to your discord server where you have added the bot and use these commands:
+   - For Encode type !encode following with your code like below example
+   ```
+   !encode print("hello")
+   ```
+   - For Decode type !decode and upload your image and send it
+   ```
+   !decode
+   ```
+
 ## The Magic Methods Team
 - [MoltenSteel](https://github.com/StoneSteel27) - Team Leader
 - [FusionX](https://github.com/venkat66)
