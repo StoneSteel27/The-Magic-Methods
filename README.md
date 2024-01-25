@@ -5,7 +5,6 @@ the styled code snippet.
 
 ![Explanation](https://raw.githubusercontent.com/StoneSteel27/The-Magic-Methods/main/doc_images/code_stego.png)
 
-A Code_Stego Demo Website: [Code_Stego](https://codestego.up.railway.app/stego/).
 
 Invite our Discord Bot for testing the functionalities : [Invite Bot](https://discord.com/api/oauth2/authorize?client_id=1148263715771273278&permissions=0&scope=bot)
 
